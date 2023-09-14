@@ -1,9 +1,14 @@
 import React from "react";
 import "./Task.css";
+import TaskType from "../models/Task";
 
-type TaskProps = {};
+type TaskProps = {
+  task: TaskType;
+  deleteTask: (id: number) => void;
+};
 
-export const Task = ({}: TaskProps) => {
+export const Task = ({task, deleteTask}: TaskProps) => {
+
   return (
     <div className="task-container">
       <div className="task-content">
@@ -11,11 +16,11 @@ export const Task = ({}: TaskProps) => {
           <input type="checkbox" checked={false} />
           <span className="checkmark"></span>
         </label>
-        <p>"Titre de la tâche"</p>
+        <p>{ task.title }</p>
       </div>
       <div className="task-actions">
         <button onClick={() => console.log("edit")}>Edit</button>
-        <button onClick={() => console.log("delete")}>Delete</button>
+        <button onClick={() => deleteTask(task.id) } >Delete</button>
       </div>
     </div>
   );

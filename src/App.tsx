@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Task } from "./components/Task";
-import { TaskFormModal } from "./components/TaskFormModal";
 import { data } from "./data/tasks";
+import { TaskFormModal } from "./components/TaskFormModal";
+import { Header } from "./components/Header";
+import { TasksList } from "./components/TasksList"
 
 const App = () => {
   const title = "To do list";
-  const tasks = data;
   const taskToEdit: any = null;
+  // const tasks = data;
+  const [tasks, setTasks] = useState(data);
 
   const updateTaskState = (taskId: number) => {
     console.error("I need to be implemented");
@@ -22,35 +24,36 @@ const App = () => {
     console.error("I need to be implemented");
   };
 
+
   const deleteTask = (taskId: number) => {
+    setTasks(tasks => tasks.filter((task) => taskId !== task.id));
     console.error("I need to be implemented");
   };
 
+  const [show, setShow] = useState(false);
+
+
   return (
     <div className="main">
-      <div className="header">
-        <h1>Replace me using the title const</h1>
-      </div>
-      <Task />
+      < Header title={title} />
+      <TasksList tasks={tasks} deleteTask={deleteTask}/>
       <button
         className="add-task-btn"
-        onClick={() => console.log("this button should open the modal")}
+        onClick={() => setShow(true)}
       >
         +
       </button>
       <TaskFormModal
-        show={false}
-        handleClose={() =>
-          console.log("pass me a method that will close the modal")
-        }
+        show={show}
+        handleClose={() => setShow(false)}
         addOrEditTask={addOrEditTask}
         initialValues={
           taskToEdit != null
             ? {
-                id: taskToEdit.id,
-                title: taskToEdit.title,
-                description: taskToEdit.description,
-              }
+              id: taskToEdit.id,
+              title: taskToEdit.title,
+              description: taskToEdit.description,
+            }
             : undefined
         }
       />
