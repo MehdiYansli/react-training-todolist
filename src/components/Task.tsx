@@ -1,6 +1,8 @@
 import React from "react";
 import "./Task.css";
 import TaskType from "../models/Task";
+import {AiFillEdit} from 'react-icons/ai'
+import {AiFillDelete} from 'react-icons/ai'
 
 type TaskProps = {
   task: TaskType;
@@ -20,8 +22,8 @@ export const Task = ({task, deleteTask, editTask}: TaskProps) => {
         <p>{ task.title }</p>
       </div>
       <div className="task-actions">
-        <button onClick={() => editTask(task.id)}>Edit</button>
-        <button onClick={() => deleteTask(task.id) } >Delete</button>
+        <button onClick={() => editTask(task.id)}><AiFillEdit /></button>
+        <button onClick={() => deleteTask(task.id) } ><AiFillDelete /></button>
       </div>
     </div>
   );
