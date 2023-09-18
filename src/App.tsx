@@ -80,7 +80,7 @@ const App = () => {
         +
       </button>
       <TaskFormModal
-        key={key}
+        // key={key}
         show={show}
         handleClose={resetForm}
         addOrEditTask={addOrEditTask}
