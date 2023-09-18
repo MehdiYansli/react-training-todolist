@@ -14,12 +14,16 @@ export const TaskFormModal = ({
   addOrEditTask,
   initialValues,
 }: TaskFormModalProps) => {
-  const [title, setTitle] = useState(initialValues?.title ?? undefined);
+  const [title, setTitle] = useState(initialValues?.title ?? '');
   const [description, setDescription] = useState(
-    initialValues?.description ?? undefined
+    initialValues?.description ?? ''
   );
 
   // Use a hook to listen to the initial values changes here
+  // useEffect(() => {
+  //   setTitle(initialValues?.title ?? '');
+  //   setDescription(initialValues?.description ?? '');
+  // }, [initialValues]);
 
   if (!show) return null;
 

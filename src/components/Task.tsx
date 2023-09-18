@@ -5,9 +5,10 @@ import TaskType from "../models/Task";
 type TaskProps = {
   task: TaskType;
   deleteTask: (id: number) => void;
+  editTask: (id: number) => void;
 };
 
-export const Task = ({task, deleteTask}: TaskProps) => {
+export const Task = ({task, deleteTask, editTask}: TaskProps) => {
 
   return (
     <div className="task-container">
@@ -19,7 +20,7 @@ export const Task = ({task, deleteTask}: TaskProps) => {
         <p>{ task.title }</p>
       </div>
       <div className="task-actions">
-        <button onClick={() => console.log("edit")}>Edit</button>
+        <button onClick={() => editTask(task.id)}>Edit</button>
         <button onClick={() => deleteTask(task.id) } >Delete</button>
       </div>
     </div>
