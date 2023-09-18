@@ -20,10 +20,10 @@ export const TaskFormModal = ({
   );
 
   // Use a hook to listen to the initial values changes here
-  // useEffect(() => {
-  //   setTitle(initialValues?.title ?? '');
-  //   setDescription(initialValues?.description ?? '');
-  // }, [initialValues]);
+  useEffect(() => {
+    setTitle(initialValues?.title ?? '');
+    setDescription(initialValues?.description ?? '');
+  }, [initialValues]);
 
   if (!show) return null;
 

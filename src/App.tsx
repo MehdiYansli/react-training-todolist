@@ -13,7 +13,7 @@ const App = () => {
   // const tasks = data;
   const [show, setShow] = useState(false);
   const [tasks, setTasks] = useState(data);
-  const [key, setKey] = useState(0);
+  // const [key, setKey] = useState(0);
 
   const tasksId = tasks.map((task) => task.id);
   const lastId = Math.max(...tasksId);
@@ -24,7 +24,7 @@ const App = () => {
   function resetForm() {
     setShow(false);
     setTaskToEdit(null);
-    setKey(key + 1);
+    // setKey(key + 1);
   }
 
 
@@ -58,7 +58,7 @@ const App = () => {
     }
     setTaskToEdit(selectTask);
     setShow(true);
-    setKey(key + 1);
+    // setKey(key + 1);
     return taskId;
   };
 
